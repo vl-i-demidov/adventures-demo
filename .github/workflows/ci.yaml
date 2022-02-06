@@ -1,0 +1,31 @@
+name: ci
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET Core SDK '3.1.x'
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+
+      - name: Build
+        run: dotnet publish Demo.Adventures.sln -c Release
+
+      - name: Unit Tests
+        run: dotnet test ".\tests\Demo.Adventures.Tests\bin\Release\netcoreapp3.1\Demo.Adventures.Tests.dll" --filter "TestCategory=Unit"
+
+      - name: Build Image
+        run: docker compose -f .\docker-compose\docker-compose.yml build
+
+      - name: Start services
+        run: docker compose -f .\docker-compose\docker-compose.yml up -d
+
+      - name: End-to-End Tests
+        run: dotnet test ".\tests\Demo.Adventures.Tests\bin\Release\netcoreapp3.1\Demo.Adventures.Tests.dll" --filter "TestCategory=E2E"

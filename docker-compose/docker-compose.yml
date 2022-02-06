@@ -1,0 +1,27 @@
+services:
+
+  adventures-api:
+    image: adventures-api-image
+    # profiles: ["service", "all"]
+    build:
+      context: ${REPO_ROOT_DIR}/${PUBLISH_DIR}
+      dockerfile: Dockerfile
+    container_name: adventures-api
+    restart: on-failure
+    ports:
+      - ${ADVENTURES_API_PORT}:80
+    environment:
+      - Repository__ConnectionString=${REPOSITORY_CONNECTIONSTRING}
+    depends_on:
+      - mongo-db
+    command: dotnet Demo.Adventures.Api.dll run
+
+  mongodb:
+    image: mongo:4.4
+    # profiles: ["db", "all"]
+    restart: on-failure
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - 27017:27017
