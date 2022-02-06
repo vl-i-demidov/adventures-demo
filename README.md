@@ -1,5 +1,4 @@
-# Adventures Demo 
-![ci workflow](https://github.com/vl-i-demidov/adventures-demo/actions/workflows/ci.yaml/badge.svg)
+# Adventures Demo  ![ci workflow](https://github.com/vl-i-demidov/adventures-demo/actions/workflows/ci.yaml/badge.svg)
 This web application allows a player to choose their own adventure by picking from multiple choices in order to progress to the next set of choices, until they get to one of the endings.
 
 ## Data structure
