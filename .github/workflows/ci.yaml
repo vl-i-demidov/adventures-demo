@@ -19,13 +19,13 @@ jobs:
         run: dotnet publish Demo.Adventures.sln -c Release
 
       - name: Unit Tests
-        run: dotnet test ".\tests\Demo.Adventures.Tests\bin\Release\netcoreapp3.1\Demo.Adventures.Tests.dll" --filter "TestCategory=Unit"
+        run: dotnet test ./tests/Demo.Adventures.Tests/bin/Release/netcoreapp3.1/Demo.Adventures.Tests.dll --filter "TestCategory=Unit"
 
       - name: Build Image
-        run: docker compose -f .\docker-compose\docker-compose.yml build
+        run: docker compose -f ./docker-compose/docker-compose.yml build
 
       - name: Start services
-        run: docker compose -f .\docker-compose\docker-compose.yml up -d
+        run: docker compose -f ./docker-compose/docker-compose.yml up -d
 
       - name: End-to-End Tests
-        run: dotnet test ".\tests\Demo.Adventures.Tests\bin\Release\netcoreapp3.1\Demo.Adventures.Tests.dll" --filter "TestCategory=E2E"
+        run: dotnet test "./tests/Demo.Adventures.Tests/bin/Release/netcoreapp3.1/Demo.Adventures.Tests.dll" --filter "TestCategory=E2E"
