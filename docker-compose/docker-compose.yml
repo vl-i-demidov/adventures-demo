@@ -2,7 +2,7 @@ services:
 
   adventures-api:
     image: adventures-api-image
-    # profiles: ["service", "all"]
+    profiles: ["service", "full"]
     build:
       context: ${REPO_ROOT_DIR}/${PUBLISH_DIR}
       dockerfile: Dockerfile
@@ -18,7 +18,7 @@ services:
 
   mongodb:
     image: mongo:4.4
-    # profiles: ["db", "all"]
+    profiles: ["db", "full"]
     restart: on-failure
     environment:
       - MONGO_INITDB_ROOT_USERNAME=user
