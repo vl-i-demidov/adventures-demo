@@ -1,16 +1,16 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Net.Mime;
+using System.Threading.Tasks;
+using AutoMapper;
 using Demo.Adventures.Api.Contracts.Adventures;
 using Demo.Adventures.Logic.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Net.Mime;
-using System.Threading.Tasks;
 
 namespace Demo.Adventures.Api.Controllers
 {
     /// <summary>
-    /// Provides methods to manage adventures
+    ///     Provides methods to manage adventures
     /// </summary>
     [Route("api/v1/adventures")]
     [ApiController]
@@ -21,7 +21,7 @@ namespace Demo.Adventures.Api.Controllers
         private readonly IMapper _mapper;
 
         /// <summary>
-        /// Initializes controller.
+        ///     Initializes controller.
         /// </summary>
         public AdventuresController(IAdventureService adventureService, IMapper mapper)
         {
@@ -30,7 +30,7 @@ namespace Demo.Adventures.Api.Controllers
         }
 
         /// <summary>
-        /// Find adventure by Id
+        ///     Find adventure by Id
         /// </summary>
         /// <param name="adventureId">Adventure Id</param>
         /// <returns>Adventure</returns>
@@ -47,7 +47,7 @@ namespace Demo.Adventures.Api.Controllers
         }
 
         /// <summary>
-        /// Create adventure
+        ///     Create adventure
         /// </summary>
         /// <param name="request">Create request</param>
         /// <returns>Create response</returns>
@@ -62,7 +62,7 @@ namespace Demo.Adventures.Api.Controllers
         }
 
         /// <summary>
-        /// Update adventure
+        ///     Update adventure
         /// </summary>
         /// <param name="adventureId">Adventure Id</param>
         /// <param name="request">Update request</param>
@@ -76,6 +76,5 @@ namespace Demo.Adventures.Api.Controllers
 
             return Ok();
         }
-
     }
 }

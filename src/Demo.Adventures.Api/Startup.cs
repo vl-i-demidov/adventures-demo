@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Reflection;
 using AutoMapper;
 using Demo.Adventures.Api.Infrastructure;
 using Demo.Adventures.Api.MapperProfiles;
@@ -10,9 +13,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System;
-using System.IO;
-using System.Reflection;
 
 namespace Demo.Adventures.Api
 {
@@ -25,7 +25,7 @@ namespace Demo.Adventures.Api
         }
 
         public IConfiguration Configuration { get; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -40,11 +40,7 @@ namespace Demo.Adventures.Api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseSwagger();
             app.UseSwaggerUI();
@@ -55,19 +51,13 @@ namespace Demo.Adventures.Api
 
             app.UseMiddleware<ErrorHandlerMiddleware>(env.IsDevelopment());
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
 
         private static void AddAutoMapperProfiles(IServiceCollection services)
         {
             var mapperConfiguration = new MapperConfiguration(
-                cfg =>
-                {
-                    cfg.AddProfile<AdventureProfile>();
-                });
+                cfg => { cfg.AddProfile<AdventureProfile>(); });
 
             var mapper = mapperConfiguration.CreateMapper();
             services.AddSingleton(mapper);

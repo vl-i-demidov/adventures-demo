@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Demo.Adventures.Tests.E2E
 {
     /// <summary>
-    /// Base class for end-to-end tests.
+    ///     Base class for end-to-end tests.
     /// </summary>
     [Category("E2E")]
     public class BaseTestFixture

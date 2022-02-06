@@ -9,12 +9,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Demo.Adventures.Api.Infrastructure
 {
     /// <summary>
-    /// Provides custom exception handling logic.
+    ///     Provides custom exception handling logic.
     /// </summary>
     internal class ErrorHandlerMiddleware
     {
-        private readonly RequestDelegate _next;
         private readonly bool _includeDetails;
+        private readonly RequestDelegate _next;
 
         public ErrorHandlerMiddleware(RequestDelegate next, bool includeDetails)
         {
@@ -46,13 +46,15 @@ namespace Demo.Adventures.Api.Infrastructure
                     Title = title,
                     Detail = details
                 };
-               
+
                 var result = JsonSerializer.Serialize(problem);
                 await response.WriteAsync(result);
             }
         }
 
-        private static int ResolveStatusCode(Exception ex) =>
-           ex is ServiceException se ? (int)se.Status : (int)HttpStatusCode.InternalServerError;
+        private static int ResolveStatusCode(Exception ex)
+        {
+            return ex is ServiceException se ? (int)se.Status : (int)HttpStatusCode.InternalServerError;
+        }
     }
 }

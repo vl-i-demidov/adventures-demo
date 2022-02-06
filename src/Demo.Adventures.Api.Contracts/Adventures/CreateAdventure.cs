@@ -5,8 +5,7 @@ namespace Demo.Adventures.Api.Contracts.Adventures
 {
     public class CreateAdventureRequest
     {
-        [Required(AllowEmptyStrings = false)]
-        public string Title { get; set; }
+        [Required(AllowEmptyStrings = false)] public string Title { get; set; }
     }
 
     public class CreateAdventureResponse

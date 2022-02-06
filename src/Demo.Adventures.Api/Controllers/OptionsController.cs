@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Demo.Adventures.Api.Controllers
 {
     /// <summary>
-    /// Provides methods to manage step options
+    ///     Provides methods to manage step options
     /// </summary>
     [Route("api/v1/adventures/{adventureId:guid}/steps/{stepId:guid}/options")]
     [ApiController]
@@ -19,7 +19,7 @@ namespace Demo.Adventures.Api.Controllers
         private readonly IAdventureService _adventureService;
 
         /// <summary>
-        /// Initializes controller.
+        ///     Initializes controller.
         /// </summary>
         public OptionsController(IAdventureService adventureService)
         {
@@ -27,7 +27,7 @@ namespace Demo.Adventures.Api.Controllers
         }
 
         /// <summary>
-        /// Create step option
+        ///     Create step option
         /// </summary>
         /// <param name="adventureId">Adventure Id</param>
         /// <param name="stepId">Step Id</param>
@@ -45,7 +45,7 @@ namespace Demo.Adventures.Api.Controllers
         }
 
         /// <summary>
-        /// Update step option
+        ///     Update step option
         /// </summary>
         /// <param name="adventureId">Adventure Id</param>
         /// <param name="stepId">Step Id</param>
@@ -64,7 +64,7 @@ namespace Demo.Adventures.Api.Controllers
         }
 
         /// <summary>
-        /// Delete step option
+        ///     Delete step option
         /// </summary>
         /// <param name="adventureId">Adventure Id</param>
         /// <param name="stepId">Step Id</param>

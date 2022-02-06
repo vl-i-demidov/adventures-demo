@@ -79,7 +79,7 @@ namespace Demo.Adventures.Api.Controllers
         {
             var id = await _adventureService.CreateStepAsync(adventureId, request.Text);
 
-            return CreatedAtAction(nameof(Get), new { adventureId = adventureId, stepId = id },
+            return CreatedAtAction(nameof(Get), new { adventureId, stepId = id },
                 new CreateStepResponse { Id = id });
         }
 

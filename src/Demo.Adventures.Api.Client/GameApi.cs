@@ -18,7 +18,7 @@ namespace Demo.Adventures.Api.Client
             var req = new RestRequest(BaseUrl)
                 .AddJsonBody(request);
 
-            var resp= await Client.PostAsync<StartGameResponse>(req);
+            var resp = await Client.PostAsync<StartGameResponse>(req);
 
             return resp.GameId;
         }

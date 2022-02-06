@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 using Demo.Adventures.Api.Contracts.Adventures;
 using RestSharp;
@@ -89,7 +88,7 @@ namespace Demo.Adventures.Api.Client
                 .AddJsonBody(request);
 
             var resp = await Client.PostAsync<CreateOptionResponse>(req);
-            
+
             return resp.Id;
         }
 
