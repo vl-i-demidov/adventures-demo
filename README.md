@@ -69,7 +69,7 @@ REST API provides basic CRUD operations for `Adventure`s, `Step`s and `Option`s.
 ![Options Api](https://db3pap004files.storage.live.com/y4mMYqrxEOWDo-VypCA-voeSb4knRBNkqcAT0JwH-BouOKsk0CwtittdTOIQCyXUAF-bTX2sruIYQwV4pvCJtXbSuniO3CZrvVlOApxzSvIvRRZtXzS5xgYWqOfyd-5buukFRzzw7TydgUZTFcPr-q7lvgdO6RmqMgv6wtfCL0_Narx8ng7DWFqnjPw0OP6H1p5bzfbpt6KFw2G0EIRYqb6PA/options-api.png?psid=1&width=815&height=236)
 
 
-"Take an Adventure" and "Decision tree" pages would also use API to manege `Game`s. In particular, `GET /games/{gameId}` returns all steps that th user made during the game including selected options.
+"Take an Adventure" and "Decision tree" pages would also use API to manage `Game`s. In particular, `GET /games/{gameId}` returns all steps that the user made during the game including selected options.
 
 
 ![Game Api](https://db3pap004files.storage.live.com/y4mLPTBjyBnx2Re_WXLLPqE4L11E9-0HurmFSPeKhpnZ_myjtfCmA_0vCb8KjZ8xMcQsgfNf1awBhG4Be-vDpkWtByBb7m1g1sfoxNCgKTHBxKV44PQBy5ibTCylXPZI48Win0Vf5i4D_gue78QeWgVFKWkQsoeO8Pe1c4xuRdtufiniRNUcg-oAuKcwZhg4ltZ929BiyxhbnwfmNlffKTsGA/games-api.png?psid=1&width=768&height=203)
