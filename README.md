@@ -15,7 +15,7 @@ There is a few main objects that describe adventure.
 {
     "Id":"1c2bf383-657a-455b-b303-546b45ffb39e",
     "Title":"My Adventure",
-    "FirstStepId": "1c2bf383-657a-455b-b303-546b45ffb39e"
+    "FirstStepId": "c8c5f880-1334-4bd2-918f-90fd0bb4ef63"
 }
 ```
 `Step` - a question with `Option`s or a final adventure result.
@@ -50,7 +50,7 @@ There is a few main objects that describe adventure.
             "StepId": "c8c5f880-1334-4bd2-918f-90fd0bb4ef63",
             "OptionId": "8d971152-9304-49e5-bdb7-2cf88ec608e"
         }, {
-            "StepId": "b851e357-da82-4d45-a660-ddebe099de75",
+            "StepId": "7b9e3682-e18c-4d0b-ae54-fca967cf029c",
             "OptionId": "677a33c8-b781-4bf0-b2f6-cd7a81fa8a55"
         }
     ]
