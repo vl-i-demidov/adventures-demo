@@ -6,22 +6,22 @@ namespace Demo.Adventures.Tests.Mocks.Database
 {
     internal abstract class RepositoryMock<T>
     {
-        protected readonly ConcurrentDictionary<Guid, T> _collection;
+        protected ConcurrentDictionary<Guid, T> Collection { get; }
 
         protected RepositoryMock()
         {
-            _collection = new ConcurrentDictionary<Guid, T>();
+            Collection = new ConcurrentDictionary<Guid, T>();
         }
 
         protected void AddEntity(Guid id, T entity)
         {
             // todo: check if entity already exists
-            _collection.TryAdd(id, entity);
+            Collection.TryAdd(id, entity);
         }
 
         protected T GetEntity(Guid id)
         {
-            if (_collection.TryGetValue(id, out var entity)) return entity;
+            if (Collection.TryGetValue(id, out var entity)) return entity;
 
             throw GetEntityNotFoundException<T>(id);
         }
@@ -31,7 +31,7 @@ namespace Demo.Adventures.Tests.Mocks.Database
             // assert exists
             GetEntity(id);
 
-            _collection.TryRemove(id, out _);
+            Collection.TryRemove(id, out _);
         }
 
         protected EntityNotFoundException GetEntityNotFoundException<TEntity>(Guid id)

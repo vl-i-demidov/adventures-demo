@@ -11,7 +11,7 @@ namespace Demo.Adventures.Tests.Mocks.Database
     {
         public Task<List<Step>> ListStepsAsync(Guid adventureId)
         {
-            var steps = _collection.Values.Where(s => s.AdventureId == adventureId).ToList();
+            var steps = Collection.Values.Where(s => s.AdventureId == adventureId).ToList();
             return Task.FromResult(steps);
         }
 

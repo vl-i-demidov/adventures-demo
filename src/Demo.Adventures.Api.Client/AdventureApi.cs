@@ -13,7 +13,6 @@ namespace Demo.Adventures.Api.Client
         {
         }
 
-
         public async Task<Guid> CreateAdventureAsync(string title)
         {
             var request = new CreateAdventureRequest { Title = title };

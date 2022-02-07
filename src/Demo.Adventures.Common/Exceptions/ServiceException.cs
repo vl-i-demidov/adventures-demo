@@ -8,7 +8,7 @@ namespace Demo.Adventures.Common.Exceptions
     /// </summary>
     public abstract class ServiceException : Exception
     {
-        public ServiceException(string message, HttpStatusCode status) : base(message)
+        protected ServiceException(string message, HttpStatusCode status) : base(message)
         {
             Status = status;
         }
