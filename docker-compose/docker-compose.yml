@@ -13,7 +13,7 @@ services:
     environment:
       - Repository__ConnectionString=${REPOSITORY_CONNECTIONSTRING}
     depends_on:
-      - mongo-db
+      - mongodb
     command: dotnet Demo.Adventures.Api.dll run
 
   mongodb:
