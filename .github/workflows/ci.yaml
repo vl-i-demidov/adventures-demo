@@ -28,4 +28,7 @@ jobs:
         run: docker compose -f ./docker-compose/docker-compose.yml --profile full up -d
 
       - name: End-to-End Tests
-        run: dotnet test "./tests/Demo.Adventures.Tests/bin/Release/netcoreapp3.1/Demo.Adventures.Tests.dll" --filter "TestCategory=E2E"
+        run: dotnet test ./tests/Demo.Adventures.Tests/bin/Release/netcoreapp3.1/Demo.Adventures.Tests.dll --filter "TestCategory=E2E"
+
+      - name: Stop services
+        run: docker compose -f ./docker-compose/docker-compose.yml down --remove-orphans
