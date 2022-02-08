@@ -36,7 +36,7 @@ namespace Demo.Adventures.Logic.Implementation
 
             var nextStep = await _adventureService.GetStepAsync(selectedOption.NextStepId);
 
-            var option = new SelectedOption(currentStep.Id, optionId);
+            var option = new SelectedOption(optionId);
             await _repo.AddSelectedOptionAsync(gameId, option);
 
             return nextStep;
@@ -53,21 +53,32 @@ namespace Demo.Adventures.Logic.Implementation
             var adventure = await _adventureService.GetAdventureAsync(game.AdventureId);
             var allSteps = await _adventureService.ListStepsAsync(game.AdventureId);
 
-            // steps where user selected an option
-            var gameSteps = game.SelectedOptions.Join(allSteps, selOpt => selOpt.StepId, step => step.Id,
-                (selOpt, step) => new GameStep(step, selOpt.OptionId)).ToList();
-
-            if (gameSteps.Any())
+            // todo: check consistency (do not use First())
+            var gameSteps = new List<GameStep>();
+            if (game.SelectedOptions.Any())
             {
+                // steps where user selected an option
+                var stepId = adventure.FirstStepId;
+
+                // walk through selected options and find corresponding steps
+                foreach (var selectedOption in game.SelectedOptions)
+                {
+                    var step = allSteps.First(s => s.Id == stepId);
+                    var option = step.Options.First(o => o.Id == selectedOption.OptionId);
+
+                    gameSteps.Add(new GameStep(step, option.Id));
+
+                    stepId = option.NextStepId;
+                }
+
                 // resolve last step - the last selected option points to this step
-                // todo: check consistency (do not use First())
                 var lastStepWithOptions = gameSteps.Last();
                 var lastSelectedOption = lastStepWithOptions.Step.Options
                     .First(o => o.Id == lastStepWithOptions.SelectedOptionId);
                 var lastStep = allSteps.First(s => s.Id == lastSelectedOption.NextStepId);
                 gameSteps.Add(new GameStep(lastStep));
             }
-
+            
             return (game, adventure, gameSteps);
         }
     }
